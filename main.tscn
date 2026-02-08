@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://main_scene_uid"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://player_scene_uid" path="res://player.tscn" id="2_player_scene"]
+[ext_resource type="PackedScene" uid="uid://bullet_scene_uid" path="res://bullet.tscn" id="3_bullet_scene"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_script")
+player_scene = ExtResource("2_player_scene")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -60.0
+offset_right = 100.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Address" type="LineEdit" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+text = "127.0.0.1"
+placeholder_text = "Enter IP Address"
+alignment = 1
+
+[node name="Host" type="Button" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+text = "Host"
+
+[node name="Join" type="Button" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+text = "Join"
+
+[node name="PlayersContainer" type="Node2D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player.tscn", "res://bullet.tscn")
+spawn_path = NodePath("../PlayersContainer")

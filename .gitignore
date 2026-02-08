@@ -1,0 +1,9 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Imported translations
+*.translation
+
+# Export presets
+export_presets.cfg
